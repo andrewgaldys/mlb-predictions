@@ -1,6 +1,6 @@
 # ⚾ 2026 MLB Monte Carlo Season Simulator
 
-**Live Demo → [your-andrewgaldys.github.io/mlb-simulator](https://your-andrewgaldys.github.io/mlb-simulator)**
+**Live Demo → [andrewgaldys.github.io/mlb-simulator](https://andrewgaldys.github.io/mlb-simulator)**
 
 An interactive web app that simulates the entire 2026 MLB season **thousands of times** using probability theory and real preseason projections. See every team's playoff odds, World Series chances, and win distributions — all powered by math.
 

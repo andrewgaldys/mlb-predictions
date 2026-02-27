@@ -271,7 +271,7 @@
     async function fetchSchedule2026WithLinescore(){
       const url = new URL("https://statsapi.mlb.com/api/v1/schedule");
       url.searchParams.set("sportId", "1");
-      url.searchParams.set("gameTypes", "R"); // Regular season ONLY
+      url.searchParams.set("gameTypes", "S,R"); // Spring Training and Regular Season
       url.searchParams.set("startDate", "2026-02-28");
       url.searchParams.set("endDate", "2026-12-31");
       url.searchParams.set("hydrate", "team,linescore");

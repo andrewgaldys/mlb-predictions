@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>MLB 2026 Predictions | Upcoming</title>
-  <meta name="description" content="Upcoming MLB games and win predictions with quick reasoning." />
+  <title>MLB 2026 Picks Journal | Upcoming</title>
+  <meta name="description" content="Upcoming MLB games with journal style picks and short reasoning." />
   <style>
     :root{
       --bg0:#ffffff;
@@ -16,7 +16,6 @@
       --shadow: 0 18px 45px rgba(0,0,0,.08);
       --radius:18px;
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
@@ -28,15 +27,13 @@
         radial-gradient(900px 500px at 85% 20%, rgba(0,0,0,.04), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
-
     .wrap{max-width:1100px;margin:0 auto;padding:28px 18px 40px}
+
     header{
       display:flex;gap:14px;align-items:center;justify-content:space-between;
       padding:14px 14px 18px;
     }
-    .brand{
-      display:flex;gap:12px;align-items:center;
-    }
+    .brand{display:flex;gap:12px;align-items:center}
     .mark{
       width:38px;height:38px;border-radius:12px;
       background:linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.03));
@@ -46,9 +43,7 @@
     h1{font-size:18px;margin:0;letter-spacing:.2px}
     .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
 
-    nav{
-      display:flex;gap:10px;align-items:center;flex-wrap:wrap;
-    }
+    nav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .pill{
       display:inline-flex;align-items:center;gap:8px;
       padding:10px 12px;border-radius:999px;
@@ -66,6 +61,7 @@
     .topbar{
       display:flex;gap:10px;align-items:center;justify-content:space-between;
       padding:0 14px 18px;
+      flex-wrap:wrap;
     }
     .search{
       flex:1;display:flex;gap:10px;align-items:center;max-width:560px;
@@ -115,6 +111,7 @@
       border:1px solid rgba(0,0,0,.10);
       background:rgba(255,255,255,.50);
       font-size:12.5px;
+      white-space:nowrap;
     }
 
     .cardBody{padding:12px 14px 14px}
@@ -122,9 +119,7 @@
       display:flex;align-items:center;justify-content:space-between;gap:10px;
       margin-bottom:10px;
     }
-    .team{
-      display:flex;align-items:center;gap:10px;min-width:0;
-    }
+    .team{display:flex;align-items:center;gap:10px;min-width:0}
     .logo{
       width:34px;height:34px;border-radius:12px;
       border:1px solid rgba(0,0,0,.10);
@@ -133,9 +128,7 @@
       overflow:hidden;
     }
     .logo img{width:26px;height:26px;display:block}
-    .abbr{
-      font-weight:700;letter-spacing:.6px;font-size:14px;
-    }
+    .abbr{font-weight:700;letter-spacing:.6px;font-size:14px}
     .vs{
       font-size:12.5px;color:var(--muted);
       padding:6px 10px;border-radius:999px;
@@ -143,16 +136,6 @@
       background:rgba(255,255,255,.45);
     }
 
-    .row{
-      display:flex;gap:10px;align-items:flex-start;justify-content:space-between;
-      margin-top:8px;
-    }
-    .reason{
-      color:rgba(0,0,0,.78);
-      font-size:13px;
-      line-height:1.45;
-      margin:0;
-    }
     .why{
       margin-top:10px;
       padding:10px 12px;
@@ -175,11 +158,7 @@
       line-height:1.45;
     }
 
-    footer{
-      padding:22px 14px 0;
-      color:var(--muted);
-      font-size:12.5px;
-    }
+    footer{padding:22px 14px 0;color:var(--muted);font-size:12.5px}
     .note{
       border:1px solid rgba(0,0,0,.08);
       background:rgba(255,255,255,.55);
@@ -199,21 +178,21 @@
       <div class="brand">
         <div class="mark" aria-hidden="true"></div>
         <div>
-          <h1>MLB 2026 Predictions</h1>
-          <div class="sub">Sleek game picks, quick reasoning, clean history</div>
+          <h1>MLB 2026 Picks Journal</h1>
+          <div class="sub">Upcoming slate, simple picks, simple reasons</div>
         </div>
       </div>
 
       <nav>
         <a class="pill active" href="./index.html">Upcoming <small>2026</small></a>
-        <a class="pill" href="./results.html">Past Games <small>Results</small></a>
+        <a class="pill" href="./results.html">Results <small>Journal</small></a>
       </nav>
     </header>
 
     <div class="topbar">
       <div class="search" role="search">
         <span class="muted" aria-hidden="true">Search</span>
-        <input id="q" type="search" placeholder="Try: NYY, LAD, BOS, Opening Day..." autocomplete="off" />
+        <input id="q" type="search" placeholder="Try: NYY, LAD, 04/02, night, opener..." autocomplete="off" />
       </div>
       <div class="hint" id="count"></div>
     </div>
@@ -222,15 +201,14 @@
 
     <footer>
       <div class="note">
-        <div><strong>Tip:</strong> Replace the sample data in the script with your real model outputs.</div>
-        <div class="muted">Logos are pulled via MLB team IDs from MLB static assets.  [oai_citation:1‡Reddit](https://www.reddit.com/r/mlbdata/comments/1b1eit0/team_logos/?utm_source=chatgpt.com)</div>
+        <div><strong>How to use:</strong> Keep adding games to the UPCOMING array (or swap it to load from a JSON file). This page will auto sort and only show Feb 28, 2026 through Dec 31, 2026.</div>
+        <div class="muted">Logos load via MLB team IDs. If any logo fails, the abbreviation shows as a clean fallback.</div>
       </div>
     </footer>
   </div>
 
   <script>
-    // MLB team IDs and common abbreviations (30 teams).
-    // Team ID list reference: MLB Gameday team information.  [oai_citation:2‡GitHub](https://raw.githubusercontent.com/jasonlttl/gameday-api-docs/master/team-information.md)
+    // Team abbreviations mapped to MLB team IDs for logo URLs.
     const TEAM = {
       ARI:{id:109}, ATL:{id:144}, BAL:{id:110}, BOS:{id:111}, CHC:{id:112},
       CWS:{id:145}, CIN:{id:113}, CLE:{id:114}, COL:{id:115}, DET:{id:116},
@@ -247,7 +225,6 @@
     }
 
     function logoFallbackHTML(abbr){
-      // If the SVG fails, show abbreviation in a clean circle.
       return `
         <div style="
           width:26px;height:26px;border-radius:10px;
@@ -260,8 +237,17 @@
       `;
     }
 
-    // Sample "upcoming games" data (swap this with your real predictions).
-    // Keep it minimal and sleek: date, away, home, predicted winner, confidence, why bullets.
+    // Date filter window you asked for:
+    const START = new Date("2026-02-28T00:00:00");
+    const END   = new Date("2026-12-31T23:59:59");
+
+    // Journal entries: add as many as you want.
+    // Use:
+    //  - date: "YYYY-MM-DD"
+    //  - timeET: "7:10 PM ET"
+    //  - away/home: team abbreviations
+    //  - pick: the abbreviation you picked
+    //  - why: short bullets
     const UPCOMING = [
       {
         date: "2026-04-02",
@@ -269,11 +255,10 @@
         away: "NYY",
         home: "HOU",
         pick: "HOU",
-        confidence: 0.56,
         why: [
-          "Matchup edge vs projected starter profile",
-          "Home run suppression plays better in this park",
-          "Bullpen depth advantage late innings"
+          "Bullpen usage lines up clean",
+          "Better matchup vs starter mix",
+          "Home field edges late innings"
         ]
       },
       {
@@ -282,11 +267,10 @@
         away: "LAD",
         home: "SFG",
         pick: "LAD",
-        confidence: 0.60,
         why: [
-          "Higher projected OBP top 4 hitters",
-          "Stronger platoon matchups vs opposing relievers",
-          "Defense and baserunning edge"
+          "Top of lineup gets on base",
+          "Platoon matchups look favorable",
+          "Defense should travel well"
         ]
       },
       {
@@ -295,11 +279,10 @@
         away: "BOS",
         home: "TOR",
         pick: "TOR",
-        confidence: 0.53,
         why: [
-          "Lineup contact profile vs pitcher mix",
-          "Better run environment in this park for their approach",
-          "Slight bullpen leverage advantage"
+          "Contact approach plays in this park",
+          "Cleaner late inning matchups",
+          "Slight edge in run creation"
         ]
       },
       {
@@ -308,11 +291,10 @@
         away: "CHC",
         home: "STL",
         pick: "STL",
-        confidence: 0.54,
         why: [
-          "Starting pitching depth edge",
-          "More stable late inning matchups",
-          "Lower strikeout rate helps in high leverage spots"
+          "Rotation depth advantage",
+          "Fewer empty at bats in leverage",
+          "Home bullpen matchups"
         ]
       }
     ];
@@ -325,7 +307,39 @@
       const d = new Date(iso + "T00:00:00");
       return d.toLocaleDateString(undefined, { weekday:"short", month:"short", day:"numeric", year:"numeric" });
     }
-    function pct(x){ return Math.round(x * 100) + "%"; }
+
+    function parseGameDateTime(dateISO, timeET){
+      // Minimal parser for sorting. Works for times like "7:10 PM ET".
+      // If time is missing or weird, it still sorts by date.
+      try{
+        const m = String(timeET || "").match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+        let hh = 0, mm = 0;
+        if(m){
+          hh = parseInt(m[1], 10);
+          mm = parseInt(m[2], 10);
+          const ap = m[3].toUpperCase();
+          if(ap === "PM" && hh !== 12) hh += 12;
+          if(ap === "AM" && hh === 12) hh = 0;
+        }
+        // We sort consistently without needing timezone conversions.
+        return new Date(`${dateISO}T${String(hh).padStart(2,"0")}:${String(mm).padStart(2,"0")}:00`);
+      }catch{
+        return new Date(dateISO + "T00:00:00");
+      }
+    }
+
+    function withinWindow(g){
+      const dt = parseGameDateTime(g.date, g.timeET);
+      return dt >= START && dt <= END;
+    }
+
+    function sortGames(arr){
+      return arr.slice().sort((a,b) => {
+        const da = parseGameDateTime(a.date, a.timeET).getTime();
+        const db = parseGameDateTime(b.date, b.timeET).getTime();
+        return da - db;
+      });
+    }
 
     function render(items){
       listEl.innerHTML = "";
@@ -338,10 +352,10 @@
         card.innerHTML = `
           <div class="cardHead">
             <div class="meta">
-              <div class="date">${fmtDate(g.date)}  •  ${g.timeET}</div>
+              <div class="date">${fmtDate(g.date)}  •  ${g.timeET || ""}</div>
               <div class="match">${g.away} @ ${g.home}</div>
             </div>
-            <div class="badge">Pick: <strong>${g.pick}</strong>  <span class="muted">(${pct(g.confidence)})</span></div>
+            <div class="badge">Pick: <strong>${g.pick}</strong></div>
           </div>
 
           <div class="cardBody">
@@ -366,16 +380,14 @@
             <div class="why">
               <p class="whyTitle">Why</p>
               <ul>
-                ${g.why.map(x => `<li>${x}</li>`).join("")}
+                ${(g.why || []).map(x => `<li>${x}</li>`).join("")}
               </ul>
             </div>
           </div>
         `;
-
         listEl.appendChild(card);
       });
 
-      // Attach a clean fallback if any logo fails.
       listEl.querySelectorAll(".logo img").forEach(img => {
         img.addEventListener("error", (e) => {
           const wrap = e.target.closest(".logo");
@@ -389,16 +401,22 @@
 
     function applyFilter(){
       const q = (qEl.value || "").trim().toUpperCase();
-      if(!q) return render(UPCOMING);
-      const filtered = UPCOMING.filter(g => {
-        const hay = `${g.date} ${g.away} ${g.home} ${g.pick} ${g.why.join(" ")}`.toUpperCase();
-        return hay.includes(q);
-      });
-      render(filtered);
+
+      let items = UPCOMING.filter(withinWindow);
+      items = sortGames(items);
+
+      if(q){
+        items = items.filter(g => {
+          const hay = `${g.date} ${g.timeET || ""} ${g.away} ${g.home} ${g.pick} ${(g.why||[]).join(" ")}`.toUpperCase();
+          return hay.includes(q);
+        });
+      }
+
+      render(items);
     }
 
     qEl.addEventListener("input", applyFilter);
-    render(UPCOMING);
+    applyFilter();
   </script>
 </body>
 </html>

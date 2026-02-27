@@ -22,6 +22,9 @@
   .header h1 { font-family: 'Archivo Black', sans-serif; font-size: clamp(26px, 5vw, 42px); color: #0d1f2d; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 12px; }
 .header p { color: #5a7a9a; font-size: 14px; max-width: 500px; margin: 0 auto; line-height: 1.7; }
 
+  .team-row > div { display: flex; align-items: center; justify-content: center; }
+.team-row > div:first-child { justify-content: flex-start; }
+  
   .container { max-width: 1000px; margin: 0 auto; padding: 36px 24px; }
 
   .controls { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 28px; align-items: center; }  .controls label { font-size: 11px; color: #4a6a8a; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
@@ -38,8 +41,7 @@
   .expandable-btn { width: 100%; padding: 14px 18px; background: linear-gradient(135deg, #eef2f7 0%, #e4ecf5 100%); border: none; color: #1a2a3a; font-family: 'Archivo Black', sans-serif; font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
 
   .col-headers { display: grid; grid-template-columns: 2fr 1.2fr 0.7fr 1fr 0.8fr 0.8fr 0.8fr; padding: 10px 20px; font-size: 10px; color: #6b8299; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; border-bottom: 1px solid #d0dce8; background: #f9fbfd; }
-  .team-row { display: grid; grid-template-columns: 2fr 1.2fr 0.7fr 1fr 0.8fr 0.8fr 0.8fr; align-items: center; padding: 14px 20px; border-bottom: 1px solid #eef2f7; font-size: 13px; transition: background 0.2s; cursor: default; }  .team-row:hover { background: #f0f5fb; }
-
+  .team-row { display: grid; grid-template-columns: 2fr 1.2fr 0.7fr 1fr 0.8fr 0.8fr 0.8fr; align-items: center; padding: 14px 20px; border-bottom: 1px solid #eef2f7; font-size: 13px; transition: background 0.2s; cursor: default; min-height: 56px; }
   .rank-badge { width: 26px; height: 26px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0; }  .team-abbr { font-weight: 700; color: #0d1f2d; letter-spacing: -0.01em; }
   .avg-wins { text-align: center; font-weight: 700; color: #0d1f2d; font-family: 'Archivo Black', sans-serif; font-size: 17px; }  .ci-cell { text-align: center; color: #6b8299; font-size: 11px; }
   .ci-sigma { opacity: 0.6; }
@@ -81,8 +83,7 @@
 
   .footer { text-align: center; padding: 32px 0 20px; font-size: 11px; color: #8ba3bd; line-height: 1.8; }
 
-  .dist-bar { display: flex; align-items: flex-end; height: 40px; gap: 1px; opacity: 0.85; }
-  .dist-tick { width: 3px; border-radius: 1px 1px 0 0; transition: height 0.3s ease; min-height: 1px; }
+  .dist-bar { display: flex; align-items: flex-end; height: 40px; gap: 1px; opacity: 0.85; width: 100%; }  .dist-tick { width: 3px; border-radius: 1px 1px 0 0; transition: height 0.3s ease; min-height: 1px; }
 
   .hidden { display: none; }
 
@@ -467,9 +468,8 @@ function makeTeamRowHTML(team, numSims, rank) {
     ${makeDistHTML(team.simWins, team.color, numSims)}
     <div class="avg-wins">${avg}</div>
     <div class="ci-cell">${p5}–${p95} <span class="ci-sigma">(σ=${sd})</span></div>
-    <div style="text-align:center"><span class="playoff-badge ${ppClass}">${pp}%</span></div>
-    <div class="div-pct">${dp}%</div>
-    <div style="text-align:center"><span class="${wsClass}">${wp}%</span></div>
+    <div style="display:flex;align-items:center;justify-content:center"><span class="playoff-badge ${ppClass}">${pp}%</span></div>    <div class="div-pct">${dp}%</div>
+    <div style="display:flex;align-items:center;justify-content:center"><span class="${wsClass}">${wp}%</span></div>
   </div>`;
 }
 

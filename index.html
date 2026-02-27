@@ -47,7 +47,6 @@
 
   .rank-badge { width: 22px; height: 22px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-size: 9px; font-weight: 700; color: #fff; flex-shrink: 0; }
   .team-abbr { font-weight: 700; color: #0d1f2d; letter-spacing: -0.01em; }
-  .team-name { color: #6b8299; margin-left: 8px; font-size: 11px; }
   .avg-wins { text-align: center; font-weight: 700; color: #0d1f2d; font-family: 'Archivo Black', sans-serif; font-size: 15px; }
   .ci-cell { text-align: center; color: #6b8299; font-size: 11px; }
   .ci-sigma { opacity: 0.6; }
@@ -470,7 +469,7 @@ function makeTeamRowHTML(team, numSims, rank) {
       <span class="rank-badge" style="background:${team.color}">${rank}</span>
       <div style="display:flex;align-items:center;gap:8px">
         <img src="https://www.mlbstatic.com/team-logos/${getTeamId(team.abbr)}.svg" width="24" height="24" style="object-fit:contain;flex-shrink:0" onerror="this.style.display='none'">
-        <div><span class="team-abbr">${team.abbr}</span><span class="team-name">${team.name}</span></div>
+        <div><span class="team-abbr">${team.abbr}</span></div>
       </div>
     </div>
     ${makeDistHTML(team.simWins, team.color, numSims)}

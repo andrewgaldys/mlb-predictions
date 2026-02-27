@@ -7,6 +7,15 @@
   <title>MLB 2026 | Upcoming</title>
   <meta name="description" content="Upcoming MLB regular season games in 2026 with picks." />
   <style>
+
+    .selectWrap select[multiple]{
+  width: 190px;
+  padding: 6px 2px;
+}
+.selectWrap select[multiple] option{
+  padding: 6px 8px;
+}
+    
     :root{
       --bg0:#ffffff;
       --bg1:#f3f4f6;
@@ -184,12 +193,10 @@
 
     <div class="controls">
       <div class="filterGroup">
-        <div class="selectWrap">
-          <span class="label">Team</span>
-          <select id="teamFilter" aria-label="Filter by team">
-            <option value="ALL">All</option>
-          </select>
-        </div>
+<div class="selectWrap">
+  <span class="label">Teams</span>
+  <select id="teamFilter" multiple size="6" aria-label="Filter by teams"></select>
+</div>
 
         <div class="selectWrap">
           <span class="label">Date</span>
@@ -328,19 +335,20 @@
       const teams = Array.from(teamSet).sort();
       const dates = Array.from(dateSet).sort();
 
-      teamFilterEl.innerHTML = `<option value="ALL">All</option>` + teams.map(t => `<option value="${t}">${t}</option>`).join("");
+      teamFilterEl.innerHTML = teams.map(t => `<option value="${t}">${t}</option>`).join("");
       dateFilterEl.innerHTML = `<option value="ALL">All</option>` + dates.map(d => `<option value="${d}">${d}</option>`).join("");
     }
 
     function applyFilters(){
-      const teamVal = teamFilterEl.value;
+     const selectedTeams = Array.from(teamFilterEl.selectedOptions).map(o => o.value);
       const dateVal = dateFilterEl.value;
 
-      let items = ALL_GAMES.slice();
+let items = ALL_GAMES.slice();
 
-      if(teamVal !== "ALL"){
-        items = items.filter(g => g.awayAbbr === teamVal || g.homeAbbr === teamVal);
-      }
+// If no teams are selected, treat it as "All"
+if(selectedTeams.length){
+  items = items.filter(g => selectedTeams.includes(g.awayAbbr) || selectedTeams.includes(g.homeAbbr));
+}
       if(dateVal !== "ALL"){
         items = items.filter(g => g.dayKey === dateVal);
       }
@@ -422,6 +430,7 @@
         buildFilters(ALL_GAMES);
 
         teamFilterEl.addEventListener("change", applyFilters);
+teamFilterEl.addEventListener("click", applyFilters);
         dateFilterEl.addEventListener("change", applyFilters);
 
         applyFilters();
